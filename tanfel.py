@@ -35,3 +35,19 @@ def osszegzes(bok):
 
 print("3. feladat")
 print(f"Az iskolában a heti összóraszám: {osszegzes(beosztasok)}")
+
+# 4. feladat
+# Kérje be a felhasználótól egy tanár nevét, és írassa ki a képernyőre, hogy hetente hány
+# órában tanít!
+
+print("4. feladat")
+be_tanarnev=input("Egy tanár neve= ") or "Albatrosz Aladin"
+
+def tanar_oraszamamnak_osszegzese(bok,be_nev):
+    osszeg=0
+    for elem in bok:
+        if be_nev==elem["tanar"]:
+            osszeg+=elem["oraszam"]
+    return osszeg
+
+print(f"A tanár heti óraszáma: {tanar_oraszamamnak_osszegzese(beosztasok,be_tanarnev)}")
