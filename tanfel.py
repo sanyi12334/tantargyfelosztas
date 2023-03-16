@@ -72,9 +72,32 @@ with open("of.txt","w",encoding="utf-8") as fm2:
 
 
 print("6. feladat")
-be_osztaly=input(Osztály= ) or "10.b"
-be_tantargy=input(Tantárgy= ) or "kemia"
-print(f"Csoportbontásban tanulják.")
+be_osztaly=input("Osztály= ") or "10.b"
+be_tantargy=input("Tantárgy= ") or "kemia"
 
-index=0
-while index<len(beosztasok) and not(beosztasok[index]["osztaly"]==be_osztaly and beosztasok[index]
+
+def csoportban_tanuljak(beo, be_o, be_t):
+    i=0
+    while i<len(be_o) and not(beo[i]["osztaly"]==be_o):
+        i+=1
+    return not(i<len(beo))
+
+if csoportban_tanuljak(beosztasok, be_osztaly, be_tanarnev):
+    print(f"Csoportbontásban tanulják.")
+else:
+    print(f"osztályszinten tanulják.")
+
+
+# 7. feladat
+# A fenntartó számára az is fontos információ, hogy hány tanár dolgozik az iskolában. Írassa
+# ki ezt az adatot a képernyőre!
+
+print("7. feladat")
+
+tanarok=[]
+
+for beosztas in beosztasok:
+    if beosztas["tanar"] not in tanarok:
+        tanarok.append(beosztas["tanar"])
+
+print(f"Az iskolában {len(tanarok)} tanár tanít.")
